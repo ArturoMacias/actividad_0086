@@ -15,7 +15,7 @@ public class SupportSystem
 {
     private InputReader reader;
     private Responder responder;
-    
+
     /**
      * Creates a technical support system.
      */
@@ -49,8 +49,9 @@ public class SupportSystem
         }
         printGoodbye();
     }
+
     /**
-     * Ejercicio 83.1
+     * Ejercicio 83.1 y 83.2
      */
     public void start2()
     {
@@ -60,8 +61,8 @@ public class SupportSystem
 
         while(!finished) {
             String input = reader.getInput();
-
-            if(input.contains("bye")) {
+            //Con contains también se podría            
+            if(input.trim().toLowerCase().startsWith("bye")) {
                 finished = true;
             }
             else {
@@ -71,6 +72,8 @@ public class SupportSystem
         }
         printGoodbye();
     }
+
+    
 
     /**
      * Print a welcome message to the screen.
