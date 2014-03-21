@@ -49,6 +49,28 @@ public class SupportSystem
         }
         printGoodbye();
     }
+    /**
+     * Ejercicio 83.1
+     */
+    public void start2()
+    {
+        boolean finished = false;
+
+        printWelcome();
+
+        while(!finished) {
+            String input = reader.getInput();
+
+            if(input.contains("bye")) {
+                finished = true;
+            }
+            else {
+                String response = responder.generateResponse();
+                System.out.println(response);
+            }
+        }
+        printGoodbye();
+    }
 
     /**
      * Print a welcome message to the screen.
