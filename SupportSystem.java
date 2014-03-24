@@ -84,11 +84,37 @@ public class SupportSystem
 
         while(!finished) {
             String input = reader.getInput();
-                   
+
             if(input.trim().toLowerCase().equals("bye")) {
                 finished = true;
             }
             else {
+                String response = responder.generateResponse();
+                System.out.println(response);
+            }
+        }
+        printGoodbye();
+    }
+
+    /**
+     * Ejercicio 0092
+     */
+    public void start4()
+    {
+        boolean finished = false;
+
+        printWelcome();
+
+        while(!finished) {
+            String input = reader.getInput();
+            if(input.trim().toLowerCase().equals("bye")) {
+                finished = true;
+            }
+            else if(responder.getMap().containsKey(input)) {
+                System.out.println(responder.getMap().get(input));
+            }
+                
+            else{
                 String response = responder.generateResponse();
                 System.out.println(response);
             }

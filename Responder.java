@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The responder class represents a response generator object.
@@ -12,6 +13,7 @@ public class Responder
 {
     private Random rnd;
     private ArrayList<String> respuestas;
+    private HashMap map;
     
     /**
      * 
@@ -28,6 +30,11 @@ public class Responder
         respuestas.add("Please, repeat me the previous information you gave me");
         respuestas.add("It seems you have a difficult problem to solve...");
         
+        map = new HashMap();
+        map.put("computer","You must restart your computer");
+        map.put("internet","Contact with your Internet company");
+        map.put("problem","ok, we're going to solve it");
+        map.put("sound","Are your speakers working?");
     }
     
   
@@ -40,5 +47,12 @@ public class Responder
     {
         String respuesta = respuestas.get(rnd.nextInt(respuestas.size()-1));
         return respuesta; 
+    }
+    
+    /**
+     * 
+     */
+    public HashMap getMap(){
+        return map;
     }
 }
