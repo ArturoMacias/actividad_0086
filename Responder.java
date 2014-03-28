@@ -55,7 +55,8 @@ public class Responder
      */   
     public String generateExisting(String word){
            if (map.containsKey(word)){
-               return map.get(word);
+               String response = map.get(word);
+               return response;
             }else{
                 return generateResponse();
             }

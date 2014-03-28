@@ -102,9 +102,7 @@ public class SupportSystem
     public void start4()
     {
         boolean finished = false;
-
         printWelcome();
-
         while(!finished) {
             String input = reader.getInput();
             if(input.trim().toLowerCase().equals("bye")) {
