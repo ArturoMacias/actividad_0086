@@ -109,13 +109,9 @@ public class SupportSystem
             String input = reader.getInput();
             if(input.trim().toLowerCase().equals("bye")) {
                 finished = true;
-            }
-            else if(responder.getMap().containsKey(input)) {
-                System.out.println(responder.getMap().get(input));
-            }
-                
+            }                     
             else{
-                String response = responder.generateResponse();
+                String response = responder.generateExisting(input);
                 System.out.println(response);
             }
         }

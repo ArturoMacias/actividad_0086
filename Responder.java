@@ -13,7 +13,7 @@ public class Responder
 {
     private Random rnd;
     private ArrayList<String> respuestas;
-    private HashMap map;
+    private HashMap<String,String> map;
     
     /**
      * 
@@ -47,6 +47,18 @@ public class Responder
     {
         String respuesta = respuestas.get(rnd.nextInt(respuestas.size()-1));
         return respuesta; 
+    }
+    
+    /**
+     * Este método ya contiene la posibilidad de que se de que al introducir una palabra,esa palabra nos mande
+     * al hashMap o directamente al generateResponse()
+     */   
+    public String generateExisting(String word){
+           if (map.containsKey(word)){
+               return map.get(word);
+            }else{
+                return generateResponse();
+            }
     }
     
     /**
