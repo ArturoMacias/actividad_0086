@@ -1,6 +1,8 @@
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * The responder class represents a response generator object.
@@ -53,13 +55,23 @@ public class Responder
      * Este método ya contiene la posibilidad de que se de que al introducir una palabra,esa palabra nos mande
      * al hashMap o directamente al generateResponse()
      */   
-    public String generateExisting(String word){
-           if (map.containsKey(word)){
-               String response = map.get(word);
-               return response;
-            }else{
-                return generateResponse();
+    public String generateExisting(HashSet<String> palabras){
+        
+        boolean found = false;
+        // aquí se guarda directamente la cadena obtenida aleatoriamente. Luego ya se cambiará si se encuentra en el map una key
+        String response = generateResponse();
+        // se recorre todo el hashSet,
+        Iterator<String> it = palabras.iterator();
+        while (it.hasNext() && !false){
+            String palabraBuscada = it.next();
+            if (map.containsKey(palabraBuscada)){
+                found = true;
+                //al coincidir se le pasa a response el valor que va con esa key
+                response = map.get(palabraBuscada);
             }
+            
+        }
+        return response;
     }
     
     /**

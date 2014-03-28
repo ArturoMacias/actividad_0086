@@ -1,3 +1,4 @@
+import java.util.HashSet;
 /**
  * This class implements a technical support system. It is the top
  * level class in this project. The support system communicates via
@@ -25,76 +26,7 @@ public class SupportSystem
         responder = new Responder();
     }
 
-    /**
-     * Start the technical support system. This will print a welcome
-     * message and enter into a dialog with the user, until the user
-     * ends the dialog.
-     */
-    public void start()
-    {
-        boolean finished = false;
 
-        printWelcome();
-
-        while(!finished) {
-            String input = reader.getInput();
-
-            if(input.startsWith("bye")) {
-                finished = true;
-            }
-            else {
-                String response = responder.generateResponse();
-                System.out.println(response);
-            }
-        }
-        printGoodbye();
-    }
-
-    /**
-     * Ejercicio 83.1 y 83.2
-     */
-    public void start2()
-    {
-        boolean finished = false;
-
-        printWelcome();
-
-        while(!finished) {
-            String input = reader.getInput();
-            //Con contains también se podría            
-            if(input.trim().toLowerCase().startsWith("bye")) {
-                finished = true;
-            }
-            else {
-                String response = responder.generateResponse();
-                System.out.println(response);
-            }
-        }
-        printGoodbye();
-    }
-
-    /**
-     * Ejercicio 84
-     */
-    public void start3()
-    {
-        boolean finished = false;
-
-        printWelcome();
-
-        while(!finished) {
-            String input = reader.getInput();
-
-            if(input.trim().toLowerCase().equals("bye")) {
-                finished = true;
-            }
-            else {
-                String response = responder.generateResponse();
-                System.out.println(response);
-            }
-        }
-        printGoodbye();
-    }
 
     /**
      * Ejercicio 0092
@@ -104,8 +36,8 @@ public class SupportSystem
         boolean finished = false;
         printWelcome();
         while(!finished) {
-            String input = reader.getInput();
-            if(input.trim().toLowerCase().equals("bye")) {
+            HashSet<String> input = reader.getInput();
+            if(input.contains("bye")) {
                 finished = true;
             }                     
             else{

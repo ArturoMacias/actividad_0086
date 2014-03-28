@@ -25,13 +25,25 @@ public class InputReader
      * and return it as a String.
      *
      * @return  A String typed by the user.
-     */
+     actividad 0094 parte 1
     public String getInput()
     {
         System.out.print("> ");         // print prompt
         String inputLine = reader.nextLine();
         String [] palabras = inputLine.split(" ");
-        String primeraPalabra = palabras[0];
+        String primeraPalabra = palabras[0];//devuelve la primera palabra que metemos en cada frase
         return primeraPalabra;
+    }
+    */
+   
+    public HashSet<String> getInput(){
+        System.out.print("> ");         // print prompt
+        String inputLine = reader.nextLine();
+        String [] frase = inputLine.split(" ");
+        HashSet<String> palabras = new HashSet<>();
+        for (int i = 0;i < frase.length;i++){
+            palabras.add(frase[i]);
+        }
+        return palabras;
     }
 }
