@@ -16,8 +16,7 @@ public class Responder
     private Random rnd;
     private ArrayList<String> respuestas;
     private HashMap<HashSet<String>,String> map;
-   
-    
+
     /**
      * 
      * 
@@ -32,7 +31,7 @@ public class Responder
         respuestas.add("Exactly, which is the error message shown by your device?");
         respuestas.add("Please, repeat me the previous information you gave me");
         respuestas.add("It seems you have a difficult problem to solve...");
-        
+
         HashSet<String> set1 = new HashSet<>();
         set1.add("app");
         set1.add("free");
@@ -40,23 +39,22 @@ public class Responder
         set2.add("problem");
         set2.add("linux");
         set2.add("crash");
-        
+
         //estos dos hashset sirven para hacer conjuntos de un único elemento, para que funcione como dice el eunciado del
         //problema. Habría que hacer otros con problem, linux, crash, pero se hace con estos dos y vale.
         HashSet<String> set3 = new HashSet<>();
         set3.add("app");
-        
+
         HashSet<String> set4 = new HashSet<>();
         set4.add("free");
-        
+
         map = new HashMap<>();
         map.put(set1,"Make a free account for downloading");
         map.put(set2,"There is no solution for this problem");
         map.put(set3,"Visit our appStore");
         map.put(set4,"Visit the free section");
     }
-    
-  
+
 
     /**
      * Generate a response.
@@ -64,10 +62,21 @@ public class Responder
      */
     public String generateResponse()
     {
-        String respuesta = respuestas.get(rnd.nextInt(respuestas.size()-1));
+        int index = 0;
+        String respuesta=null;
+        if (respuestas.size()>1){
+            index = rnd.nextInt(respuestas.size()-1);
+            respuesta = respuestas.get(index);
+            respuestas.remove(index);
+        }else if(respuestas.size()==1){
+            respuesta = respuestas.get(0);
+            respuestas.remove(0);
+        }else{
+            respuesta = "I haven't understand your question";
+        }
         return respuesta; 
     }
-    
+
     /**
      * Este método ya contiene la posibilidad de que se de que al introducir una palabra,esa palabra nos mande
      * al hashMap o directamente al generateResponse()
@@ -75,14 +84,13 @@ public class Responder
     public String generateExisting(HashSet<String> palabras){
         String response = null;
         if (map.containsKey(palabras)){
-                response = map.get(palabras);
+            response = map.get(palabras);
         }else{
             response = generateResponse();
         }
-        
         return response;
     }
-    
+
     /**
      * 
      */
