@@ -31,7 +31,7 @@ public class Responder
         respuestas.add("Exactly, which is the error message shown by your device?");
         respuestas.add("Please, repeat me the previous information you gave me");
         respuestas.add("It seems you have a difficult problem to solve...");
-
+        
         HashSet<String> set1 = new HashSet<>();
         set1.add("app");
         set1.add("free");
@@ -40,8 +40,8 @@ public class Responder
         set2.add("linux");
         set2.add("crash");
 
-        //estos dos hashset sirven para hacer conjuntos de un único elemento, para que funcione como dice el eunciado del
-        //problema. Habría que hacer otros con problem, linux, crash, pero se hace con estos dos y vale.
+        //estos dos hashset(3 y 4) sirven para hacer conjuntos de un único elemento, para que funcione como dice el eunciado del
+        //problema. Habría que hacer otros con problem, linux, crash, pero se hace con estos dos y vale, para tener de ejemplo
         HashSet<String> set3 = new HashSet<>();
         set3.add("app");
 
