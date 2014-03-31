@@ -15,7 +15,8 @@ public class Responder
 {
     private Random rnd;
     private ArrayList<String> respuestas;
-    private HashMap<String,String> map;
+    private HashMap<HashSet<String>,String> map;
+   
     
     /**
      * 
@@ -32,11 +33,27 @@ public class Responder
         respuestas.add("Please, repeat me the previous information you gave me");
         respuestas.add("It seems you have a difficult problem to solve...");
         
-        map = new HashMap();
-        map.put("computer","You must restart your computer");
-        map.put("internet","Contact with your Internet company");
-        map.put("problem","ok, we're going to solve it");
-        map.put("sound","Are your speakers working?");
+        HashSet<String> set1 = new HashSet<>();
+        set1.add("app");
+        set1.add("free");
+        HashSet<String> set2 = new HashSet<>();
+        set2.add("problem");
+        set2.add("linux");
+        set2.add("crash");
+        
+        //estos dos hashset sirven para hacer conjuntos de un único elemento, para que funcione como dice el eunciado del
+        //problema. Habría que hacer otros con problem, linux, crash, pero se hace con estos dos y vale.
+        HashSet<String> set3 = new HashSet<>();
+        set3.add("app");
+        
+        HashSet<String> set4 = new HashSet<>();
+        set4.add("free");
+        
+        map = new HashMap<>();
+        map.put(set1,"Make a free account for downloading");
+        map.put(set2,"There is no solution for this problem");
+        map.put(set3,"Visit our appStore");
+        map.put(set4,"Visit the free section");
     }
     
   
@@ -56,21 +73,13 @@ public class Responder
      * al hashMap o directamente al generateResponse()
      */   
     public String generateExisting(HashSet<String> palabras){
-        
-        boolean found = false;
-        // aquí se guarda directamente la cadena obtenida aleatoriamente. Luego ya se cambiará si se encuentra en el map una key
-        String response = generateResponse();
-        // se recorre todo el hashSet,
-        Iterator<String> it = palabras.iterator();
-        while (it.hasNext() && !false){
-            String palabraBuscada = it.next();
-            if (map.containsKey(palabraBuscada)){
-                found = true;
-                //al coincidir se le pasa a response el valor que va con esa key
-                response = map.get(palabraBuscada);
-            }
-            
+        String response = null;
+        if (map.containsKey(palabras)){
+                response = map.get(palabras);
+        }else{
+            response = generateResponse();
         }
+        
         return response;
     }
     
