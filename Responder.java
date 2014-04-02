@@ -64,13 +64,10 @@ public class Responder
     {
         int index = 0;
         String respuesta=null;
-        if (respuestas.size()>1){
-            index = rnd.nextInt(respuestas.size()-1);
+        if (respuestas.size()>0){
+            index = rnd.nextInt(respuestas.size());
             respuesta = respuestas.get(index);
             respuestas.remove(index);
-        }else if(respuestas.size()==1){
-            respuesta = respuestas.get(0);
-            respuestas.remove(0);
         }else{
             respuesta = "I haven't understand your question";
         }
